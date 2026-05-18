@@ -1,34 +1,45 @@
- * [English](https://github.com/yushijinhun/authlib-injector/blob/develop/README.en.md)
+* [English](https://github.com/silent-QAQ/authlib-injector-youni-fork/blob/younifork/README.en.md)
  * **简体中文(Chinese Simplified)**
 
-# authlib-injector
-[![latest release](https://img.shields.io/github/v/tag/yushijinhun/authlib-injector?color=yellow&include_prereleases&label=version&sort=semver&style=flat-square)](https://github.com/yushijinhun/authlib-injector/releases)
-[![ci status](https://img.shields.io/github/actions/workflow/status/yushijinhun/authlib-injector/ci.yml?branch=develop)](https://github.com/yushijinhun/authlib-injector/actions?query=workflow%3ACI)
-[![license agpl-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square)](https://github.com/yushijinhun/authlib-injector/blob/develop/COPYING.md)
+# authlib-injector (Youni Fork)
+[![license agpl-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square)](https://github.com/silent-QAQ/authlib-injector-youni-fork/blob/younifork/COPYING.md)
 
 通过运行时修改 authlib 实现游戏外登录，并为 Yggdrasil 服务端的实现提供规范。
 
-**关于该项目的详细介绍见 [wiki](https://yushijinhun.github.io/authlib-injector)。**
+**本分支为 Youni Fork 版本，增加了对 Minecraft 26.2-snapshot-7 及更高版本好友功能的支持。**
+
+## 功能特性
+- ✅ 完整的 Yggdrasil 外置登录支持
+- ✅ Minecraft 26.2+ 好友功能 API 拦截和重定向
+- ✅ 自动启用好友列表功能，无需手动开启
+- ✅ 跳过官方好友确认弹窗
+- ✅ 支持 Realms 功能拦截
 
 ## 获取
-您可以从[这里](https://authlib-injector.yushi.moe/)获取最新的 authlib-injector。
+您可以从[这里](http://47.110.67.183:8888/down/MYbJv5G67mPJ.jar)获取最新的 authlib-injector (Youni Fork) 版本。
 
 ## 构建
+
 构建依赖：Gradle、JDK 17+（目标 Java 版本为 8）。
 
 执行以下命令：
+
 ```
 gradle
 ```
+
 构建输出位于 `build/libs` 下。
 
 ## 部署
+
 通过添加以下 JVM 参数来配置：
+
 ```
 -javaagent:{authlib-injector.jar 的路径}={验证服务器 URL (API 地址)}
 ```
 
 ## 参数
+
 ```
 -Dauthlibinjector.noLogFile
     不要将日志输出到文件.
@@ -116,10 +127,10 @@ gradle
     注意, 开启此功能将导致用户名包含非英文字符的玩家无法进入服务器.
 ```
 
-## 捐助
-BMCLAPI 为 authlib-injector 提供了[下载镜像站](https://yushijinhun.github.io/authlib-injector/zh/%E8%8E%B7%E5%8F%96-authlib-injector.html#bmclapi-%E9%95%9C%E5%83%8F)。如果您想要支持 authlib-injector 的开发，您可以[捐助 BMCLAPI](https://bmclapidoc.bangbang93.com/)。
+##
 
 ## 许可
+
 `wiki` 子目录中的文件采用 [CC BY-SA 4.0](CC-BY-SA-4.0.txt) 许可。
 
 所有其他文件均在 GNU Affero General Public License v3.0 或更高版本下许可，并附带“AUTHLIB-INJECTOR”例外。AGPLv3 的完整文本（包括 authlib-injector 例外）可在 [AGPLv3-with-authlib-injector-exception.txt](AGPLv3-with-authlib-injector-exception.txt) 中获取。
@@ -127,6 +138,8 @@ BMCLAPI 为 authlib-injector 提供了[下载镜像站](https://yushijinhun.gith
 > **AGPL 的例外情况:**
 >
 > 作为特例，如果您的程序通过以下方式利用本作品，则相应的行为不会导致您的作品被 AGPL 协议涵盖。
+>
 > 1. 您的程序通过打包的方式包含本作品未经修改的二进制形式，而没有静态或动态地链接到本作品；或
 > 2. 您的程序通过本作品提供的进程间通信接口（如 HTTP API）进行交互；或
 > 3. 您的程序将本作品作为 Java Agent 加载进 Java 虚拟机。
+

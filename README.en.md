@@ -1,17 +1,22 @@
  * **English**
- * [简体中文(Chinese Simplified)](https://github.com/yushijinhun/authlib-injector/blob/develop/README.md)
+ * [简体中文(Chinese Simplified)](https://github.com/silent-QAQ/authlib-injector-youni-fork/blob/younifork/README.md)
 
-# authlib-injector
-[![latest release](https://img.shields.io/github/v/tag/yushijinhun/authlib-injector?color=yellow&include_prereleases&label=version&sort=semver&style=flat-square)](https://github.com/yushijinhun/authlib-injector/releases)
-[![ci status](https://img.shields.io/github/actions/workflow/status/yushijinhun/authlib-injector/ci.yml?branch=develop)](https://github.com/yushijinhun/authlib-injector/actions?query=workflow%3ACI)
-[![license agpl-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square)](https://github.com/yushijinhun/authlib-injector/blob/develop/COPYING.md)
+# authlib-injector (Youni Fork)
+[![license agpl-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square)](https://github.com/silent-QAQ/authlib-injector-youni-fork/blob/younifork/COPYING.md)
 
 authlib-injector enables you to build a Minecraft authentication system offering all the features that genuine Minecraft has.
 
-**[See the wiki](https://yushijinhun.github.io/authlib-injector) for documents and detailed descriptions.**
+**This is the Youni Fork version with added support for Minecraft 26.2-snapshot-7 and newer friend system features.**
+
+## Features
+- ✅ Complete Yggdrasil external authentication support
+- ✅ Minecraft 26.2+ friend system API interception and redirection
+- ✅ Auto-enable friend list feature without manual activation
+- ✅ Skip official friend confirmation dialog
+- ✅ Realms feature interception support
 
 ## Download
-You can download the latest authlib-injector build from [here](https://authlib-injector.yushi.moe/).
+You can download the latest authlib-injector (Youni Fork) build from [here](http://47.110.67.183:8888/down/MYbJv5G67mPJ.jar).
 
 ## Build
 Dependencies: Gradle, JDK 17+. The target Java platform version is 8.
