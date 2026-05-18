@@ -1,0 +1,96 @@
+plugins {
+	id 'com.github.johnrengelman.shadow' version '8.1.1'
+	id 'com.palantir.git-version' version '3.0.0'
+	id 'java'
+}
+
+repositories {
+	// 阿里云镜像
+	maven { url 'https://maven.aliyun.com/repository/public' }
+	maven { url 'https://maven.aliyun.com/repository/central' }
+	maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+	
+	// 腾讯云镜像（备用）
+	maven { url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
+	
+	// 官方仓库（作为最后备用）
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.ow2.asm:asm:9.9'
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+tasks.withType(JavaCompile) {
+	options.release = 8
+	options.deprecation = true
+	options.encoding = 'UTF-8'
+}
+
+def buildNumber = System.getenv('AI_BUILD_NUMBER')
+def gitInfo
+def gitHash = "unknown"
+def isClean = false
+
+try {
+    gitInfo = versionDetails()
+    gitHash = gitInfo.gitHashFull
+    isClean = gitInfo.isCleanTag
+} catch (Exception e) {
+    // 如果没有 git 仓库，使用默认值
+    gitHash = "unknown"
+    isClean = false
+}
+
+version = System.getenv('AI_VERSION_NUMBER') ?: 'snapshot';
+try {
+    if (gitInfo != null && !gitInfo.isCleanTag) version += '.dirty'
+} catch (Exception e) {
+    // 忽略 git 相关错误
+}
+
+jar {
+	manifest {
+		def manifestAttributes = [
+			'Implementation-Title': project.name,
+			'Implementation-Version': project.version,
+			'Implementation-Vendor': 'yushijinhun',
+			'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+			'Automatic-Module-Name': 'moe.yushi.authlibinjector',
+			'Premain-Class': 'moe.yushi.authlibinjector.Premain',
+			'Agent-Class': 'moe.yushi.authlibinjector.Premain',
+			'Can-Retransform-Classes': true,
+			'Can-Redefine-Classes': true,
+			'Build-Number': buildNumber?:'-1'
+		]
+		// 只有在有 git 信息时才添加 git 相关属性
+		if (gitHash != "unknown") {
+			manifestAttributes['Git-Commit'] = gitHash
+			manifestAttributes['Git-IsClean'] = isClean
+		}
+		attributes(manifestAttributes)
+	}
+}
+
+processResources {
+	from('AGPLv3-with-authlib-injector-exception.txt') {
+		rename('AGPLv3-with-authlib-injector-exception.txt', 'authlib-injector.txt')
+		into 'META-INF/licenses'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+shadowJar {
+	archiveClassifier.set(null)
+
+	exclude 'META-INF/maven/**'
+	exclude 'module-info.class'
+
+	relocate 'org.objectweb.asm', 'moe.yushi.authlibinjector.internal.org.objectweb.asm'
+}
+
+defaultTasks 'clean', 'shadowJar'

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: authlib-injector
+Implementation-Version: snapshot
+Implementation-Vendor: yushijinhun
+Implementation-Timestamp: 2026-05-18T06:55:28+0800
+Automatic-Module-Name: moe.yushi.authlibinjector
+Premain-Class: moe.yushi.authlibinjector.Premain
+Agent-Class: moe.yushi.authlibinjector.Premain
+Can-Retransform-Classes: true
+Can-Redefine-Classes: true
+Build-Number: -1
+
